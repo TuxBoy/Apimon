@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PokemonResource;
+use App\Repository\PokemonRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -13,6 +15,12 @@ use Illuminate\Http\Request;
  */
 final class PokemonController extends Controller
 {
+    private const DEFAULT_LIMIT = 10;
+
+    public function __construct(private readonly PokemonRepositoryInterface $pokemonRepository)
+    {
+    }
+
     /**
      * @OA\Get(
      *    tags={"pokemons"},
@@ -167,9 +175,18 @@ final class PokemonController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function list(Request $request)
+    public function list(Request $request): JsonResponse
     {
-        return new JsonResponse();
+        $offset = (int) $request->get('offset', default: 0);
+        $limit = (int) $request->get('limit', default: self::DEFAULT_LIMIT);
+        $pokemons = $this->pokemonRepository->list(offset: $offset, limit: $limit);
+
+        return new JsonResponse(data: [
+            'total' => $pokemons->total(),
+            'results' => $pokemons->items(),
+            'prev' => $pokemons->previousPageUrl(),
+            'next' => $pokemons->nextPageUrl(),
+        ]);
     }
 
     /**
@@ -243,8 +260,11 @@ final class PokemonController extends Controller
      * @param int $id
      * @return JsonResponse
      */
-    public function get(int $id): JsonResponse
+    public function get(int $id, Request $request): PokemonResource
     {
-        return new JsonResponse();
+        $locale = $request->header('accept-language');
+        $pokemon = $this->pokemonRepository->byId($id);
+
+        return new PokemonResource($pokemon);
     }
 }
