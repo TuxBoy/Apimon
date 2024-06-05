@@ -1,0 +1,242 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Pokemon API",
+        "version": "1"
+    },
+    "paths": {
+        "/api/pokemons": {
+            "get": {
+                "tags": [
+                    "pokemons"
+                ],
+                "summary": "Get pokemons list",
+                "operationId": "api.pokemons.list",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Offset of the pagination",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limit of the pagination",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "total": 1302,
+                                    "prev": "http://127.0.0.1:8081/api/pokemons?offset=0&limit=5",
+                                    "next": "http://127.0.0.1:8081/api/pokemons?offset=10&limit=5",
+                                    "results": [
+                                        {
+                                            "id": 6,
+                                            "name": "Dracaufeu",
+                                            "sprites": [
+                                                {
+                                                    "type": "back",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png"
+                                                },
+                                                {
+                                                    "type": "back_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/6.png"
+                                                },
+                                                {
+                                                    "type": "front",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+                                                },
+                                                {
+                                                    "type": "front_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 7,
+                                            "name": "Carapuce",
+                                            "sprites": [
+                                                {
+                                                    "type": "back",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/7.png"
+                                                },
+                                                {
+                                                    "type": "back_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/7.png"
+                                                },
+                                                {
+                                                    "type": "front",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+                                                },
+                                                {
+                                                    "type": "front_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/7.png"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 8,
+                                            "name": "Carabaffe",
+                                            "sprites": [
+                                                {
+                                                    "type": "back",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/8.png"
+                                                },
+                                                {
+                                                    "type": "back_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/8.png"
+                                                },
+                                                {
+                                                    "type": "front",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
+                                                },
+                                                {
+                                                    "type": "front_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/8.png"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 9,
+                                            "name": "Tortank",
+                                            "sprites": [
+                                                {
+                                                    "type": "back",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/9.png"
+                                                },
+                                                {
+                                                    "type": "back_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/9.png"
+                                                },
+                                                {
+                                                    "type": "front",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
+                                                },
+                                                {
+                                                    "type": "front_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/9.png"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "id": 10,
+                                            "name": "Chenipan",
+                                            "sprites": [
+                                                {
+                                                    "type": "back",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/10.png"
+                                                },
+                                                {
+                                                    "type": "back_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/10.png"
+                                                },
+                                                {
+                                                    "type": "front",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
+                                                },
+                                                {
+                                                    "type": "front_shiny",
+                                                    "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/10.png"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pokemons/{pokemonId}": {
+            "get": {
+                "tags": [
+                    "pokemons"
+                ],
+                "summary": "Get a pokemon information",
+                "operationId": "api.pokemons.get",
+                "parameters": [
+                    {
+                        "name": "pokemonId",
+                        "in": "path",
+                        "description": "Id of the pokemon",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "id": 1,
+                                    "name": "Bulbizarre",
+                                    "description": "Quand il est jeune,  il absorbe les nutriments conservés dans son dos pour grandir et se développer.",
+                                    "types": [
+                                        {
+                                            "name": "Poison",
+                                            "url": "https://www.pokepedia.fr/images/4/45/Icône_Type_Poison_HOME.png",
+                                            "position": 2
+                                        },
+                                        {
+                                            "name": "Plante",
+                                            "url": "https://www.pokepedia.fr/images/0/0b/Icône_Type_Plante_HOME.png",
+                                            "position": 1
+                                        }
+                                    ],
+                                    "sprites": [
+                                        {
+                                            "type": "back",
+                                            "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
+                                        },
+                                        {
+                                            "type": "back_shiny",
+                                            "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png"
+                                        },
+                                        {
+                                            "type": "front",
+                                            "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                                        },
+                                        {
+                                            "type": "front_shiny",
+                                            "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png"
+                                        }
+                                    ],
+                                    "cries": [
+                                        {
+                                            "type": "latest",
+                                            "url": "https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/1.ogg"
+                                        },
+                                        {
+                                            "type": "legacy",
+                                            "url": "https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/legacy/1.ogg"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

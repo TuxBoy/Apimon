@@ -1,0 +1,29 @@
+services:
+  apimon_nginx:
+    build:
+      context: docker/nginx
+    container_name: apimon_nginx
+    volumes:
+      - "./src:/home/apimon"
+    ports:
+      - "8081:80"
+
+  apimon_php:
+    build:
+      context: docker/php
+    container_name: apimon_php
+    volumes:
+      - "./src:/home/apimon"
+    depends_on:
+      - apimon_mysql
+
+  apimon_mysql:
+    image: mysql:8.4.0
+    container_name: apimon_mysql
+    ports:
+      - "3361:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: apimon_root
+      MYSQL_DATABASE: apimon
+      MYSQL_USER: apimon
+      MYSQL_PASSWORD: apimon
