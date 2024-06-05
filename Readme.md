@@ -6,6 +6,14 @@ Dans le repertoire du projet, lancer `./run.sh init` (verifier que le script run
 
 Aller sur http://127.0.0.1:8081 pour verifier que l'installation est réussie
 
+### Lancer les tests
+
+Pour lancer les tests, exécuter la commande suivante :
+
+```bash
+$ docker compose exec apimon_php php artisan test
+```
+
 # Exercice
 
 L'exercice consite à faire 2 APIs, une API de listing des pokemon et une API d'information sur un pokemon donné.
